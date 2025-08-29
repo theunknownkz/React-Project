@@ -15,6 +15,8 @@ const items = [
   "Three"
 ]
 
+const [, test2, ] = [1, 2, 3]
+
 const numberObjects = items.map((number, i) => ({
   id: i,
   title: number
