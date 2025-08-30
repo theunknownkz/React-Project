@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useReducer, use } from "react"
 import "./App.css"
 
 function Header({ name, year }) {
@@ -40,18 +40,18 @@ function Main({ numbers, openStatus, onStatus }) {
 }
 
 function App() {
-  const [status, setStatus] = useState(true)
+  const [status, toggle] = useReducer((status) => !status, true)
   return (
   <div>
     <h1>Current status is {status ? "open" : "closed"}.</h1>
-    <button onClick={() => setStatus(!status)}>
+    <button onClick={toggle}>
       {status ? "Close" : "Open"}
     </button>
     <Header name="Alex" year={new Date().getFullYear()} />
     <Main
       numbers={numberObjects}
       openStatus={status}
-      onStatus={setStatus} />
+      onStatus={toggle} />
   </div>
   )
 }
