@@ -34,12 +34,12 @@ function Main({ numbers }) {
 }
 
 function App() {
-  const [status, setStatus] = useState("Open")
+  const [status, setStatus] = useState(true)
   return (
   <div>
-    <h1>Current status is {status}.</h1>
-    <button onClick={() => setStatus("Closed")}>
-      Close
+    <h1>Current status is {status ? "open" : "closed"}.</h1>
+    <button onClick={() => setStatus(!status)}>
+      {status ? "Close" : "Open"}
     </button>
     <Header name="Alex" year={new Date().getFullYear()} />
     <Main numbers={numberObjects} />
