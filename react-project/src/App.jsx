@@ -21,9 +21,15 @@ const numberObjects = items.map((number, i) => ({
   title: number
 }))
 
-function Main({ numbers }) {
+function Main({ numbers, openStatus, onStatus }) {
   return (
     <>
+      <div>
+        <button onClick={() => onStatus(true)}>Set to open</button>
+        <h2>
+          {openStatus ? "Open" : "Closed"}
+        </h2>
+      </div>
       <ul>
         {numbers.map((number) =>
         <li key={number.id} style={{ listStyleType: "None" }}>{number.title}
@@ -42,7 +48,10 @@ function App() {
       {status ? "Close" : "Open"}
     </button>
     <Header name="Alex" year={new Date().getFullYear()} />
-    <Main numbers={numberObjects} />
+    <Main
+      numbers={numberObjects}
+      openStatus={status}
+      onStatus={setStatus} />
   </div>
   )
 }
