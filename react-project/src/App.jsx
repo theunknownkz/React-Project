@@ -1,4 +1,4 @@
-import { useState, useReducer, use } from "react"
+import { useEffect, useReducer } from "react"
 import "./App.css"
 
 function Header({ name, year }) {
@@ -41,6 +41,11 @@ function Main({ numbers, openStatus, onStatus }) {
 
 function App() {
   const [status, toggle] = useReducer((status) => !status, true)
+
+  useEffect(() => {
+    console.log(`The current status is ${status ? "open" : "closed"}.`)
+  }, [])
+
   return (
   <div>
     <h1>Current status is {status ? "open" : "closed"}.</h1>
