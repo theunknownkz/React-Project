@@ -1,3 +1,4 @@
+import { useState } from "react"
 import "./App.css"
 
 function Header({ name, year }) {
@@ -14,8 +15,6 @@ const items = [
   "Two",
   "Three"
 ]
-
-const [, test2, ] = [1, 2, 3]
 
 const numberObjects = items.map((number, i) => ({
   id: i,
@@ -35,8 +34,13 @@ function Main({ numbers }) {
 }
 
 function App() {
+  const [status, setStatus] = useState("Open")
   return (
   <div>
+    <h1>Current status is {status}.</h1>
+    <button onClick={() => setStatus("Closed")}>
+      Close
+    </button>
     <Header name="Alex" year={new Date().getFullYear()} />
     <Main numbers={numberObjects} />
   </div>
