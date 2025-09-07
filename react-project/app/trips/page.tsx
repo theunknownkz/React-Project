@@ -1,10 +1,15 @@
 import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
 export default async function TripsPage() {
     const session = await auth()
+
+    const trips = await prisma.trip.findMany({
+        where: { userId: session?.user?.id },
+    })
 
     if (!session) {
         return (
@@ -27,12 +32,14 @@ export default async function TripsPage() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Welcome back, User</CardTitle>
+                    <CardTitle>Welcome back, {session.user?.name}</CardTitle>
                 </CardHeader>
 
                 <CardContent>
                     <p>
-                        Your currently planned trips:
+                        {trips.length === 0
+                          ? "Start planning your first trip by clicking the button above."
+                          : `You have ${trips.length}`}
                     </p>
                 </CardContent>
             </Card>
