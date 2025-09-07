@@ -17,6 +17,10 @@ export default function NewTrip() {
                 <CardHeader>New Trip</CardHeader>
                 <CardContent>
                     <form className="space-y-6" action={(formData: FormData) => {
+                        if (imageUrl) {
+                            formData.append("imageUrl", imageUrl)
+                        }
+
                         startTransition(() => {
                             createTrip(formData)
                         })
