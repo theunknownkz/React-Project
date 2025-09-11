@@ -5,12 +5,16 @@ import Image from "next/image";
 import { Calendar, Plus } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { useState } from "react";
 
 interface TripDetailClientProps {
   trip: Trip;
 }
 
 export default function TripDetailClient({ trip }: TripDetailClientProps) {
+  const [activeTab, setActiveTab] = useState("overview");
+
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       {trip.imageUrl && (
@@ -45,6 +49,26 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
             </Button>
           </Link>
         </div>
+      </div>
+
+      <div className="bg-white p-6 shadow rounded-lg">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsList className="mb-6">
+            <TabsTrigger value="overview" className="text-lg">
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="itinerary" className="text-lg">
+              Itinerary
+            </TabsTrigger>
+            <TabsTrigger value="map" className="text-lg">
+              Map
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="overview" className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6"></div>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
