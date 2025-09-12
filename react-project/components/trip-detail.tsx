@@ -85,6 +85,7 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-start"></div>
                 </div>
               </div>
             </div>
