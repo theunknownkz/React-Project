@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { useState } from "react";
 import Map from "@/components/map";
-//import SortableItinerary from "./sortable-itinerary";
+import SortableItinerary from "./sortable-itinerary";
 
 export type TripWithLocation = Trip & {
   locations: Location[];
@@ -146,8 +146,7 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
                 </Link>
               </div>
             ) : (
-              //<SortableItinerary locations={trip.locations} tripId={trip.id} />
-              ""
+              <SortableItinerary locations={trip.locations} tripId={trip.id} />
             )}
           </TabsContent>
 
