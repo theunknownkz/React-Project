@@ -77,12 +77,12 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
           <TabsContent value="overview" className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h2 className="text-2xl font-semibold mb-4"> Trip Summary</h2>
+                <h2 className="text-2xl font-semibold mb-4">Trip Summary</h2>
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <Calendar className="h-6 w-6 mr-3 text-gray-500" />
                     <div>
-                      <p className="font-medium text-gray-700"> Dates</p>
+                      <p className="font-medium text-gray-700">Dates</p>
                       <p className="text-sm text-gray-500">
                         {trip.startDate.toLocaleDateString()} -{" "}
                         {trip.endDate.toLocaleDateString()}
@@ -97,7 +97,7 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
                   <div className="flex items-start">
                     <MapPin className="h-6 w-6 mr-3 text-gray-500" />
                     <div>
-                      <p> Destinations</p>
+                      <p>Destinations</p>
                       <p>
                         {" "}
                         {trip.locations.length}{" "}
@@ -170,7 +170,7 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
       </div>
       <div className="text-center">
         <Link href={`/trips`}>
-          <Button> Back to Trips</Button>
+          <Button>Back to Trips</Button>
         </Link>
       </div>
     </div>
